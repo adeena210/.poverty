@@ -21,7 +21,7 @@
   <%= @nj.verified %>
 <% end %>
 </p>
-<% if user_signed_in? %>
+<%if user_signed_in? && current_user.admin %>
 <%= link_to 'Edit', edit_nj_path(@nj) %> | <%= link_to 'Delete', @nj, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <% end %>
 <%= link_to 'Back', njs_path %>

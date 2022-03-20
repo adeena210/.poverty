@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  : MyString
+  num_of_entries: MyString
+  integer: MyString
+
+two:
+  email: MyString
+  : MyString
+  num_of_entries: MyString
+  integer: MyString
