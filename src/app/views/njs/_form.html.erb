@@ -1,10 +1,10 @@
-<%= form_with(model: entry, local: true) do |form| %>
-  <% if entry.errors.any? %>
+<%= form_with(model: nj, local: true) do |form| %>
+  <% if nj.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+      <h2><%= pluralize(nj.errors.count, "error") %> prohibited this nj from being saved:</h2>
 
       <ul>
-        <% entry.errors.full_messages.each do |message| %>
+        <% nj.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_area :description %>
   </div>
 
   <div class="field">

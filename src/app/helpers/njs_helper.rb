@@ -1,0 +1,2 @@
+module NjsHelper
+end

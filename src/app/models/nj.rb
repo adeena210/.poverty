@@ -1,0 +1,2 @@
+class Nj < ApplicationRecord
+end

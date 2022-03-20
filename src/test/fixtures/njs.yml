@@ -3,11 +3,11 @@
 one:
   name: MyString
   address: MyString
-  description: MyString
+  description: MyText
   verified: false
 
 two:
   name: MyString
   address: MyString
-  description: MyString
+  description: MyText
   verified: false

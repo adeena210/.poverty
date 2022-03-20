@@ -39,26 +39,11 @@
         <ul class="navbar-nav">
           <%# If user, show account, else sign in %>
           <% if user_signed_in? %>
-            
-            <%# <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-                Account
-              </a>
-              <%# Change to rails "link_to" for the actual links when implementing %>
-              <%# Make sure to include the css class as shown in the login example %>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <%# The rails administration panel link %>
-                <% if Rails.env.development? %><%= link_to 'Rails Admin', rails_admin_path, class: "dropdown-item" %><% end %>
-            
-                <%# Devise requires that the logout command be sent using the 'delete' HTTP verb (method) %>
-                <%= link_to "Logout", destroy_user_session_path, class: "dropdown-item", method: :delete %>
-              </div>
-            </li> 
-            
-            <li class="nav-item">
-            <%= link_to "Logout", destroy_user_session_path, class: "navbar-brand", method: :delete %>
-            </li>
+          <li class="nav-item">
+          <%#= link_to "Profile", profile/:id, class: "navbar-brand" %>
+        </li>
+        <%= link_to "Logout", destroy_user_session_path, class: "dropdown-item", method: :delete %>
+        </li>  
           <% else %>
             <li class="nav-item">
               <%= link_to "Login", new_user_session_path, class: "navbar-brand" %>

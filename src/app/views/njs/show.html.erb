@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @nj.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @nj.address %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @nj.description %>
+</p>
+
+<p>
+<% if current_user.admin %>
+  <strong>Verified:</strong>
+  <%= @nj.verified %>
+<% end %>
+</p>
+<% if user_signed_in? %>
+<%= link_to 'Edit', edit_nj_path(@nj) %> | <%= link_to 'Delete', @nj, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
+<%= link_to 'Back', njs_path %>
