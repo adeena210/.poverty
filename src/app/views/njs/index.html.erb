@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Locations in New Jersey</h1>
+<br/>
+<% if user_signed_in? %>
+<%= link_to 'New Location', new_nj_path %>
+<% end %>
+
+<br/>
+<br/>
+<form id="form"> 
+  <input type="search" id="query" name="q" placeholder="Enter your address to find the closest locations">
+  <button>Search</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Description</th>
+      <th>Verified</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @njs.each do |nj| %>
+      <tr>
+        <td><%= link_to nj.name, nj %></td>
+        <td><%= nj.address %></td>
+        <td><%= nj.description %></td>
+        <td><%= nj.verified %></td>
+        <%if user_signed_in? & current_user.admin? %>
+          <td><%= link_to 'Edit', edit_nj_path(nj) %></td>
+
+          
+        <%end%>
+        <td><%= link_to 'See more details', nj %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

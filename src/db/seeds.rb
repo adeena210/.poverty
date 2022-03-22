@@ -11,7 +11,7 @@
 # Create the global configuration
 # create! makes the object and automatically saves it to the database
 # the ! means that if something goes wrong and cannot save, throw an exception
-AppConfig.create!(name: 'MyApp', logo_url: 'hhhhhhh')
+AppConfig.create!(name: './poverty/resources', logo_url: 'hhhhhhh')
 
 if Rails.env.development?
 
@@ -20,6 +20,8 @@ if Rails.env.development?
   # Right now, there is no difference between the accounts
   # If your project needs it, add a boolean field to user for administrator
   admin = User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+  admin.admin = true
+  admin.save!
   user = User.create!(email: 'user@example.com', password: 'password', password_confirmation: 'password')
 
 elsif Rails.env.production?

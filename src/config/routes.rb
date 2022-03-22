@@ -7,13 +7,26 @@
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 Rails.application.routes.draw do
+  get '/locations/nj', to: "njs#index"
+  get '/locations/nj/new', to: "njs#new"
+  get '/locations/nj', to: "njs#create"
+  get '/locations/nj/:id', to: "njs#show"
+  get '/locations/nj/:id/edit', to: "njs#edit"
+  get '/locations/nj/:id', to: "njs#update"
+  get '/locations/nj/:id', to: "njs#destroy"
+
+  resources :njs, path: 'locations/nj'
+  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  # The root page, e.g. www.example.com/, is sent here
-  # root 'controller#method_in_controller'
+ 
   root 'home#index'
+  get '/profile/:id', to: "profile#index"
+ 
   # Devise authentification pages. This controlls the user login
   # and authentification system.
   devise_for :users
+
+  
 
   # Examples:
   #
