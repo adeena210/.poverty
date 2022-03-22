@@ -7,15 +7,15 @@ My project involves creating a directory of all non-profit organizations, projec
 ## Diagrams
 
 # Use Case Diagram
-![Use Case Diagram](docs/diagrams/Use Case Diagram.png)
+![Use Case Diagram](docs/diagrams/Use\ Case\ Diagram.png)
 
 # Detailed Design Class Diagrams
-![Design Class Diagrams](docs/diagrams/Design Class Diagram.png)
+![Design Class Diagrams](docs/diagrams/Design\ Class\ Diagram.png)
 
 # System Sequence Diagrams
 ![System Sequence Diagrams](docs/diagrams/SSD.png)
 
 # State charts
-![State Charts](docs/diagrams/State chart.png)
+![State Charts](docs/diagrams/State\ chart.png)
 
 
