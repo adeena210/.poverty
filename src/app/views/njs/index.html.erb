@@ -1,13 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Locations in New Jersey</h1>
+<br/>
 <% if user_signed_in? %>
 <%= link_to 'New Location', new_nj_path %>
-<%if current_user.admin %>
-ADMIN
-<% end %>
 <% end %>
 
+<br/>
+<br/>
+<form id="form"> 
+  <input type="search" id="query" name="q" placeholder="Enter your address to find the closest locations">
+  <button>Search</button>
+</form>
 
 <table>
   <thead>
@@ -27,9 +31,12 @@ ADMIN
         <td><%= nj.address %></td>
         <td><%= nj.description %></td>
         <td><%= nj.verified %></td>
-        <%if user_signed_in? && current_user.admin %>
+        <%if user_signed_in? & current_user.admin? %>
           <td><%= link_to 'Edit', edit_nj_path(nj) %></td>
+
+          
         <%end%>
+        <td><%= link_to 'See more details', nj %></td>
       </tr>
     <% end %>
   </tbody>
