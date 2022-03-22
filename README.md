@@ -19,3 +19,5 @@ My project involves creating a directory of all non-profit organizations, projec
 ![State Charts](docs/diagrams/State_Chart.png)
 
 
+# Use Case Descriptions
+Click [here](Use_Case_Descriptions) to view the use case descriptions for this project
