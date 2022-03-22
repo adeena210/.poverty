@@ -20,4 +20,4 @@ My project involves creating a directory of all non-profit organizations, projec
 
 
 # Use Case Descriptions
-Click [here](Use_Case_Descriptions) to view the use case descriptions for this project
+Click [here](docs/Use_Case_Descriptions.pdf) to view the use case descriptions for this project
