@@ -29,3 +29,69 @@
 // and require_self *cannot* be removed.
 
 // Your code here...
+
+body {
+    background-color: #7E007B !important;
+    text-align: center !important;
+    padding-top: 30px;
+
+    a{
+        background-color: #7E007B;
+  color: #B3C2F2;
+  padding: 8px 10px;
+    }
+}
+
+.navbar {
+    background-color: #3D003C !important;
+    height: 70px;
+    
+    .navbar-brand {
+        background-color: #3D003C !important;
+        color: #B3C2F2;
+        font-weight: bold;
+    }
+
+    .link{
+        color: #B3C2F2; 
+    }
+}
+
+.container {
+    background-color: #3D003C;
+    color: #B3C2F2;
+    box-sizing: border-box;
+    margin: 25px;
+    min-width: 350px;
+    min-height: 500px;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+
+
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // height: 100px;
+    .table{
+        padding-top: 40px;
+        background-color: #faf5f6 !important;
+    
+        height: 20%;
+        color: #37000A; 
+    }
+
+    h1{
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .form{
+        background-color: #faf5f6;
+    }
+}
+
+.table{
+    background-color: #faf5f6 !important;
+    color: #37000A; 
+}
+

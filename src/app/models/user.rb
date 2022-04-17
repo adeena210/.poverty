@@ -2,6 +2,7 @@
 
 # Represents a user of the web application
 class User < ApplicationRecord
+  has_many :entries
   # Devise is a premade system for managing logins
   # You don't need to do login yourself. It's done for you.
   # TCNJ: don't edit the login system.

@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container rounded">
+<p>
+  <strong>Name:</strong>
+  <%= @entry.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @entry.address %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @entry.phone_number %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @entry.description %>
+</p>
+
+<p>
+  <strong>Verified:</strong>
+  <%= @entry.verified %>
+</p>
+
+
+<%if params[:user_id]%>
+<%= link_to 'Edit', edit_user_entry_path(:id=>@entry.id) %> |
+<%= link_to 'Back', user_entries_path %>
+<% else%>
+<%= link_to 'Edit', edit_directory_entry_path(:id=>@entry.id) %> |
+<%= link_to 'Back', directory_entries_path %>
+<%end%>
+
+</div>

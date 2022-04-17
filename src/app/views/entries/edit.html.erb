@@ -1,0 +1,12 @@
+<h1>Editing Entry</h1>
+
+<%= render 'form', entry: @entry %>
+
+<%if params[:user_id]%>
+<%= link_to 'Show', user_entry_path %> |
+<%= link_to 'Back', user_entries_path %>
+<% else%>
+<%= link_to 'Show', directory_entry_path() %> |
+<%= link_to 'Back', directory_entries_path %>
+<%end%>
+
