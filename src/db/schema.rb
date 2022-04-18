@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_21_204248) do
+ActiveRecord::Schema.define(version: 2022_04_17_233131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2022_03_21_204248) do
 
   create_table "entries", force: :cascade do |t|
     t.string "name"
-    t.string "address"
     t.string "phone_number"
     t.string "description"
     t.boolean "verified"
@@ -38,6 +37,13 @@ ActiveRecord::Schema.define(version: 2022_03_21_204248) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.string "address_1"
+    t.string "address_2"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode"
     t.index ["directory_id"], name: "index_entries_on_directory_id"
     t.index ["user_id"], name: "index_entries_on_user_id"
   end
