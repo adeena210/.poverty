@@ -6,8 +6,8 @@ My project involves creating a directory of all non-profit organizations, projec
 
 
 ## Welcome! To learn how to get started with contributing to this project, visit the resources below. These files can also be found in the docss/ directory:
-    * To install and use this project, follow this guide[here](./docs/Installation_Guide.md)
-    * Want to contribute to this project, click [here](./docs/Contributions.md)
+* To install and use this project, follow this guide[here](./docs/Installation_Guide.md)
+* Want to contribute to this project, click [here](./docs/Contributions.md)
 
 
 To view the UML diagrams used in the development of this project, click [here](./docs/diagrams/)
