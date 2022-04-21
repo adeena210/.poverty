@@ -46,9 +46,6 @@ If you encounter errors, make sure the PostgreSQL server has been started, or tr
 
   `pg_ctl -D /usr/local/var/postgres start`
 
-
-> **TCNJ NOTE:** If issues continue, there's something wrong with your psql installation.
-
 * Please run the following. `sudo yum install postgresql-libs postgresql-devel`
 
 * If the errors still continue, look up the error you're receiving for more advice.
@@ -79,9 +76,6 @@ Run the server by running:
 `rails s (or rails server) --binding xxx.xxx.xxx.xxx`
 
 Note that you won't be able to run the rails server unless you are in the `src` folder.
-
-The app should be available in the browser at http://csc415-serverXX.hpc.tcnj.edu:3000/ 
-Where XX is your server number.
 
 ### Note on the .gitignore file
 If you have any files in your app with sensitive information, API keys, data files for your database, etc., make sure to add them to your `.gitignore` file so that those files are not published on GitHub for everyone to see. You can read more about what this file is and how to use it [here](.gitignore_Guide.md).
