@@ -1,27 +1,32 @@
+#Project name: ./poverty/resources
+#Description: This website contains directories containing non-profit organizations, projects, and food banks that help those suffering from period poverty. 
+#One can create an account and create entries for these directories. Additionally, if you require help or would simply like to donate products, 
+#you can go to a directory, and search for locations closest to you
+#Filename: directories_controller.rb
+#Description: The directories controller performs multiple functionalities related to CRUD operations.
+#Last modified on: 4/20/2022
+
+
 class DirectoriesController < ApplicationController
   before_action :set_directory, only: %i[ show edit update destroy ]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-  # GET /directories or /directories.json
   def index
     @directories = Directory.all
   end
 
-  # GET /directories/1 or /directories/1.json
+  #showing a directory is equivalent to viewing the entries within the directory
   def show
     redirect_to directory_entries_path(params[:id])
   end
 
-  # GET /directories/new
   def new
     @directory = Directory.new
   end
 
-  # GET /directories/1/edit
   def edit
   end
 
-  # POST /directories or /directories.json
   def create
     @directory = Directory.new(directory_params)
 
@@ -36,7 +41,6 @@ class DirectoriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /directories/1 or /directories/1.json
   def update
     respond_to do |format|
       if @directory.update(directory_params)
@@ -49,7 +53,6 @@ class DirectoriesController < ApplicationController
     end
   end
 
-  # DELETE /directories/1 or /directories/1.json
   def destroy
     @directory.destroy
 
@@ -60,15 +63,12 @@ class DirectoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_directory
       @directory = Directory.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    # Only allows a list of trusted parameters through.
     def directory_params
-      # params.fetch(:directory, {})
       params.require(:directory).permit(:location)
-      
     end
 end

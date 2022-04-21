@@ -54,12 +54,11 @@
     <br>
     <br>
     <div class="container">
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
+      <% flash.each do |type, msg| %>
+    <div style="font-weight:bold;text-align:center">
+      <%= msg %>
+    </div>
+<% end %>
       <%= yield %>
     </div>
   </body>

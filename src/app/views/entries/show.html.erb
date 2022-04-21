@@ -1,6 +1,12 @@
-<p id="notice"><%= notice %></p>
+<!--Project name: ./poverty/resources
+Description: This website contains directories containing non-profit organizations, projects, and food banks that help those suffering from period poverty. 
+One can create an account and create entries for these directories. Additionally, if you require help or would simply like to donate products, 
+you can go to a directory, and search for locations closest to you
+Filename: index.html.erb
+Description: This page includes the view for displaying a specific entry. 
+Last modified on: 4/20/2022 -->
 
-<div class="container rounded">
+<div class="container info">
 <p>
   <strong>Name:</strong>
   <%= @entry.name %>
@@ -27,11 +33,15 @@
 </p>
 
 
+<!-- Different paths depending on whether you are on user view or directory view -->
 <%if params[:user_id]%>
 <%= link_to 'Edit', edit_user_entry_path(:id=>@entry.id) %> |
 <%= link_to 'Back', user_entries_path %>
 <% else%>
+<!-- Only the admin should be able to edit the entry on the directory view-->
+<% if user_signed_in? and current_user.admin %>
 <%= link_to 'Edit', edit_directory_entry_path(:id=>@entry.id) %> |
+<%end%>
 <%= link_to 'Back', directory_entries_path %>
 <%end%>
 
