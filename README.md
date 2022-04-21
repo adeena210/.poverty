@@ -21,7 +21,7 @@ My project involves creating a directory of all non-profit organizations, projec
 ![System Sequence Diagrams](docs/diagrams/SSD.png)
 
 # State charts
-![State Charts](docs/diagrams/State_Chart.png)
+![State Charts](docs/diagrams/State_chart.png)
 
 
 # Use Case Descriptions
