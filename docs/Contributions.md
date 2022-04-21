@@ -9,8 +9,8 @@ If you want a way to get involved, try picking an issue with an enhancement bug.
 
 For all contributions, follow these guidelines:
 
-    * Make a pull request for the change
-    * Make sure a pull request for the change doesn't already exist
-    * Make sure your pull request has an informative title and description
-    * Do not commit irrelevant files
-    * Make sure your code is well-documented 
+* Make a pull request for the change
+* Make sure a pull request for the change doesn't already exist
+* Make sure your pull request has an informative title and description
+* Do not commit irrelevant files
+* Make sure your code is well-documented 
