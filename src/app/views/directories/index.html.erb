@@ -1,0 +1,44 @@
+<!--Project name: ./poverty/resources
+Description: This website contains directories containing non-profit organizations, projects, and food banks that help those suffering from period poverty. 
+One can create an account and create entries for these directories. Additionally, if you require help or would simply like to donate products, 
+you can go to a directory, and search for locations closest to you
+Filename: index.html.erb
+Description: This page includes the view for displaying directories
+Last modified on: 4/20/2022 -->
+
+<h1>Directories</h1>
+
+<!--Only admins should be able to create a directory-->
+<% if user_signed_in? and current_user.admin %>
+  <%= link_to 'New Directory', new_directory_path %>
+  <br/>
+  <br/>
+<% end %>
+
+<p>Here are the list of state directories that are currently available. We are working on adding more!</p>
+
+<table class = "table table-hover">
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @directories.each do |directory| %>
+      <tr>
+        <td><%= directory.location  %></td>
+        <td><%= link_to 'Show', directory %></td>
+        <!--Only admins should be able to edit or delete a directory-->
+        <% if user_signed_in? and current_user.admin %>
+        <td><%= link_to 'Edit', edit_directory_path(directory) %></td>
+        <td><%= link_to 'Delete', directory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

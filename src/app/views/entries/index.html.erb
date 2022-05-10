@@ -1,0 +1,95 @@
+<!--Project name: ./poverty/resources
+Description: This website contains directories containing non-profit organizations, projects, and food banks that help those suffering from period poverty. 
+One can create an account and create entries for these directories. Additionally, if you require help or would simply like to donate products, 
+you can go to a directory, and search for locations closest to you
+Filename: index.html.erb
+Description: This page includes the view for displaying entries. It also includes the search bar and filters.
+Last modified on: 4/20/2022 -->
+
+<!--The title depends on whether you are the directory view or the user view-->
+<%if params[:user_id]%>
+<h1>Your Entries</h1>
+<% else%>
+<h1><%=@directory.location %></h1>
+<%end%>
+
+
+<%if params[:user_id]%>
+<p>Here are the list of entries you've made before. You may edit or delete them on this page!</p>
+<% else%>
+<!--You should only be able to create entries if you are signed in -->
+<% if user_signed_in? %>
+<%= link_to 'New Entry', new_directory_entry_path %>
+<br/>
+<br/>
+<p>Here are the list of entries in this state directory. You may look for locations using this search bar. If your address cannot be found, try using a "Address Line 1, Zipcode" format.</p>
+<%end %>
+
+<%end%>
+
+<!-- The user page does not include the search bar -->
+<%if params[:user_id]%>
+<% else%>
+<div class="search">
+<!-- form for performing search -->
+<%= form_tag(directory_entries_path, method: :get) do %>
+  <div class="form-inline">
+  <%= text_field_tag(:search, params[:search], :placeholder => "Enter your address to find the closest locations", :class => "form-control") %>
+  <%= submit_tag "Search", :class => "btn" %>
+  </div>
+  <div class ="form-check">
+  <%= radio_button_tag(:filter, 10, :class => "form-check-input") %>
+  <%= label_tag '< 10 miles' %>
+  <%= radio_button_tag(:filter, 30, :class => "form-check-input") %>
+  <%= label_tag '< 30 miles' %>
+  <%= radio_button_tag(:filter, 50, :class => "form-check-input") %>
+  <%= label_tag '< 50 miles' %>
+  <%= radio_button_tag(:filter, 'all', :checked => true, :class => "form-check-input") %>
+  <%= label_tag 'All' %>
+  </div>
+</div>
+<%end%>
+<%end%>
+
+<!--Table to display entries -->
+<table class = "table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone number</th>
+      <th>Description</th>
+      <th>Verified</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entries.each do |entry| %>
+      <tr>
+      <td><%=entry.name %></td>
+      <td><%=entry.address %></td>
+      <td><%=entry.phone_number %></td>
+      <td><%=entry.description %></td>
+      <td><%=entry.verified %> </td>
+      <!-- Different paths depending on whether you are on user view or directory view -->
+      <%if params[:user_id]%>
+         <td><%= link_to 'Show', user_entry_path(:id=>entry.id, :user_id => params[:user_id]) %></td>
+        <td><%= link_to 'Edit', edit_user_entry_path(:id=>entry.id, :user_id => params[:user_id]) %></td>
+        <td><%= link_to 'Delete', user_entry_path(:id=>entry.id, :user_id => params[:user_id]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% else%>
+         <td><%= link_to 'Show', directory_entry_path(:id=>entry.id) %></td>
+        <!-- Only the admin should be able to edit or delete entries on the directory view -->
+        <% if user_signed_in? and current_user.admin %>
+        <td><%= link_to 'Edit', edit_directory_entry_path(:id=>entry.id) %></td>
+        <td><%= link_to 'Delete', directory_entry_path(:id=>entry.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      <%end%>
+       
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+

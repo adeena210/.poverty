@@ -1,0 +1,82 @@
+<!--Project name: ./poverty/resources
+Description: This website contains directories containing non-profit organizations, projects, and food banks that help those suffering from period poverty. 
+One can create an account and create entries for these directories. Additionally, if you require help or would simply like to donate products, 
+you can go to a directory, and search for locations closest to you
+Filename: _form.html.erb
+Description: This page includes form utilized for editing and creating entries.
+Last modified on: 4/20/2022 -->
+
+<!--The url utilized by the form depends on whether we are on the user view or the directory view-->
+<%if params[:user_id]%>
+<% url = [@user, @entry]%>
+<%else%>
+<% url =  [@directory, @entry] %>
+<%end%>
+
+
+<%= form_with(model:url, local:true) do |form| %>
+  <% if entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+      <ul>
+        <% entry.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div  class="form-group">
+    <%= form.label :address_line_1 %>
+    <%= form.text_field :address_1 %>
+  </div>
+
+  <div  class="form-group">
+    <%= form.label :address_line_2 %>
+    <%= form.text_field :address_2 %>
+  </div>
+
+  <div  class="form-group">
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+
+<!-- Only entries that are in this location should be added, hence this value cannot be changed. -->
+  <div  class="form-group">
+    <%= form.label :state %>
+    <%= form.text_field :state, value: @directory.location, readonly: true %>
+  </div>
+
+  <div  class="form-group">
+    <%= form.label :zipcode %>
+    <%= form.text_field :zipcode %>
+  </div>
+
+  <div  class="form-group">
+    <%= form.label :phone_number %>
+    <%= form.number_field :phone_number%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+<!-- Only admins should be able to verify entries -->
+  <% if user_signed_in? and current_user.admin %>
+  <div class="form-check">
+    <%= form.label :verified %>
+    <%= form.check_box :verified  %>
+  </div>
+  <%end %>
+
+  <div class="actions">
+    <%= form.submit(:class => "btn") %>
+  </div>
+<% end %>
