@@ -67,6 +67,8 @@ Last modified on: 4/20/2022 -->
       <th>Address</th>
       <th>Phone number</th>
       <th>Description</th>
+      <th>Drop-off Location?</th>
+      <th>Provides Aid?</th>
       <th>Verified</th>
       <th colspan="3"></th>
     </tr>
@@ -79,7 +81,10 @@ Last modified on: 4/20/2022 -->
       <td><%=entry.address %></td>
       <td><%=entry.phone_number %></td>
       <td><%=entry.description %></td>
+      <td><%=entry.dropoff %> </td>
+      <td><%=entry.aid %> </td>
       <td><%=entry.verified %> </td>
+     
       <!-- Different paths depending on whether you are on user view or directory view -->
       <%if params[:user_id]%>
          <td><%= link_to 'Show', user_entry_path(:id=>entry.id, :user_id => params[:user_id]) %></td>

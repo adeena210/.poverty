@@ -22,10 +22,8 @@ class EntriesController < ApplicationController
       else
         if params[:search]
           #if search occurs, call dedicated search function
-          @entries, error = search(params[:search], params[:filter])
+          @entries, error = search(params[:search], params[:filter], params[:dropoff], params[:aid])
           flash[:error] = error
-          puts(params[:dropoff])
-          puts(params[:aid])
         else
           #if no search occurs, simply fetch all records in the directory
           @entries = Entry.where(:directory => params[:directory_id])
@@ -125,7 +123,7 @@ class EntriesController < ApplicationController
       end
     end
 
-  def search(search, filter)
+  def search(search, filter, dropoff, aid)
     if search
       #add directory's location to search request
       search = search + ", "+ @directory.location
@@ -142,8 +140,26 @@ class EntriesController < ApplicationController
         range = filter
       end
 
+      locations = nil
+      puts("VALUES")
+      puts(dropoff)
+      puts(aid)
+      if dropoff and aid
+        locations = Entry.where(:directory => params[:directory_id], :dropoff =>dropoff, :aid => aid).near(search, range)
+        puts "hello"
+      elsif dropoff
+        locations = Entry.where(:directory => params[:directory_id], :dropoff => dropoff).near(search, range)
+        puts "hello1"
+      elsif aid
+        locations = Entry.where(:directory => params[:directory_id], :aid => aid).near(search, range)
+        puts "hello2"
+      else
+        locations = Entry.where(:directory => params[:directory_id]).near(search, range)
+        puts "hello3"
+      end
+
       #perform search & return results of search
-      return Entry.where(:directory => params[:directory_id]).near(search, range), nil 
+      return locations, nil 
     end
   end
 end
