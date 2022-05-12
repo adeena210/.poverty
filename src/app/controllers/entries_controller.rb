@@ -5,7 +5,7 @@
 #Filename: entries_controller.rb
 #Description: The entries controller performs multiple functionalities including CRUD operations as well as the search functionality. 
 #It allow handles the different views for the directory side view and the user side view.
-#Last modified on: 4/20/2022
+#Last modified on: 5/11/2022
 class EntriesController < ApplicationController
   
   before_action :get_user, only: %i[ show edit update destroy ]
@@ -22,7 +22,7 @@ class EntriesController < ApplicationController
       else
         if params[:search]
           #if search occurs, call dedicated search function
-          @entries, error = search(params[:search], params[:filter])
+          @entries, error = search(params[:search], params[:filter], params[:dropoff], params[:aid])
           flash[:error] = error
         else
           #if no search occurs, simply fetch all records in the directory
@@ -123,7 +123,7 @@ class EntriesController < ApplicationController
       end
     end
 
-  def search(search, filter)
+  def search(search, filter, dropoff, aid)
     if search
       #add directory's location to search request
       search = search + ", "+ @directory.location
@@ -140,8 +140,19 @@ class EntriesController < ApplicationController
         range = filter
       end
 
+      locations = nil
+      if dropoff and aid
+        locations = Entry.where(:directory => params[:directory_id], :dropoff =>dropoff, :aid => aid).near(search, range)
+      elsif dropoff
+        locations = Entry.where(:directory => params[:directory_id], :dropoff => dropoff).near(search, range)
+      elsif aid
+        locations = Entry.where(:directory => params[:directory_id], :aid => aid).near(search, range)
+      else
+        locations = Entry.where(:directory => params[:directory_id]).near(search, range)
+      end
+
       #perform search & return results of search
-      return Entry.where(:directory => params[:directory_id]).near(search, range), nil 
+      return locations, nil 
     end
   end
 end
