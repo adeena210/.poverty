@@ -4,7 +4,7 @@ One can create an account and create entries for these directories. Additionally
 you can go to a directory, and search for locations closest to you
 Filename: index.html.erb
 Description: This page includes the view for displaying entries. It also includes the search bar and filters.
-Last modified on: 4/20/2022 -->
+Last modified on: 5/11/2022 -->
 
 <!--The title depends on whether you are the directory view or the user view-->
 <%if params[:user_id]%>
@@ -52,7 +52,8 @@ Last modified on: 4/20/2022 -->
   <div class ="form-check">
   <%= check_box_tag(:dropoff, true, false, :class => "form-check-input") %>
   <%= label_tag 'Drop-off'%>  
-  <%= check_box_tag(:aid, true, :class => "form-check-input") %>
+  <br>
+  <%= check_box_tag(:aid, true, false, :class => "form-check-input") %>
   <%= label_tag 'Provides Aid' %>
   </div>
 </div>

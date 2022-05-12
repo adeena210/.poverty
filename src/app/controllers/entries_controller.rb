@@ -5,7 +5,7 @@
 #Filename: entries_controller.rb
 #Description: The entries controller performs multiple functionalities including CRUD operations as well as the search functionality. 
 #It allow handles the different views for the directory side view and the user side view.
-#Last modified on: 4/20/2022
+#Last modified on: 5/11/2022
 class EntriesController < ApplicationController
   
   before_action :get_user, only: %i[ show edit update destroy ]
@@ -141,21 +141,14 @@ class EntriesController < ApplicationController
       end
 
       locations = nil
-      puts("VALUES")
-      puts(dropoff)
-      puts(aid)
       if dropoff and aid
         locations = Entry.where(:directory => params[:directory_id], :dropoff =>dropoff, :aid => aid).near(search, range)
-        puts "hello"
       elsif dropoff
         locations = Entry.where(:directory => params[:directory_id], :dropoff => dropoff).near(search, range)
-        puts "hello1"
       elsif aid
         locations = Entry.where(:directory => params[:directory_id], :aid => aid).near(search, range)
-        puts "hello2"
       else
         locations = Entry.where(:directory => params[:directory_id]).near(search, range)
-        puts "hello3"
       end
 
       #perform search & return results of search
