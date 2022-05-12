@@ -68,6 +68,16 @@ Last modified on: 4/20/2022 -->
     <%= form.text_field :description %>
   </div>
 
+  <div class="form-check">
+    <%= form.label 'Drop-off Location?' %>
+    <%= form.check_box :dropoff  %>
+  </div>
+
+  <div class="form-check">
+    <%= form.label 'Provides Aid?' %>
+    <%= form.check_box :aid  %>
+  </div>
+
 <!-- Only admins should be able to verify entries -->
   <% if user_signed_in? and current_user.admin %>
   <div class="form-check">
