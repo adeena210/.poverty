@@ -24,6 +24,8 @@ class EntriesController < ApplicationController
           #if search occurs, call dedicated search function
           @entries, error = search(params[:search], params[:filter])
           flash[:error] = error
+          puts(params[:dropoff])
+          puts(params[:aid])
         else
           #if no search occurs, simply fetch all records in the directory
           @entries = Entry.where(:directory => params[:directory_id])

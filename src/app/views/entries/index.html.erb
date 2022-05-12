@@ -37,6 +37,7 @@ Last modified on: 4/20/2022 -->
   <%= text_field_tag(:search, params[:search], :placeholder => "Enter your address to find the closest locations", :class => "form-control") %>
   <%= submit_tag "Search", :class => "btn" %>
   </div>
+  Distance:
   <div class ="form-check">
   <%= radio_button_tag(:filter, 10, :class => "form-check-input") %>
   <%= label_tag '< 10 miles' %>
@@ -46,6 +47,13 @@ Last modified on: 4/20/2022 -->
   <%= label_tag '< 50 miles' %>
   <%= radio_button_tag(:filter, 'all', :checked => true, :class => "form-check-input") %>
   <%= label_tag 'All' %>
+  </div>
+  Type of Location:
+  <div class ="form-check">
+  <%= check_box_tag(:dropoff, true, false, :class => "form-check-input") %>
+  <%= label_tag 'Drop-off'%>  
+  <%= check_box_tag(:aid, true, :class => "form-check-input") %>
+  <%= label_tag 'Provides Aid' %>
   </div>
 </div>
 <%end%>
