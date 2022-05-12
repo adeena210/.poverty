@@ -11,6 +11,8 @@ My project involved creating an application that allows you to create directorie
 
 ## Diagrams
 
+# To view the final exam diagrams , click [here](./docs/diagrams/Final_Exam_UML_Diagrams.pdf)
+
 # Use Case Diagram
 ![Use Case Diagram](docs/diagrams/Use_Case_Diagram.png)
 
