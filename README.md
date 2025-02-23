@@ -1,4 +1,4 @@
-# ./poverty/resources
+# ./poverty AKA period/poverty
 
 ## Description:
  This project is specifically meant to hold entries of all non-profit organizations, projects, and/or food banks that offer menstrual products to those who require them as well as those that accept donations.
