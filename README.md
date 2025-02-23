@@ -1,8 +1,7 @@
-# **Assignment 2:** Individual Project
-# Project Name: ./poverty/resources
+# ./poverty/resources
 
 ## Description:
-My project involved creating an application that allows you to create directories, add entries to these directories, and then be able to look up locations closest to your address. This project is specifically meant to hold entries of all non-profit organizations, projects, and/or food banks that offer menstrual products to those who require them as well as those that accept donations.
+ This project is specifically meant to hold entries of all non-profit organizations, projects, and/or food banks that offer menstrual products to those who require them as well as those that accept donations.
 
 
 ## Welcome! To learn how to get started with contributing to this project, visit the resources below. These files can also be found in the docs/ directory:
